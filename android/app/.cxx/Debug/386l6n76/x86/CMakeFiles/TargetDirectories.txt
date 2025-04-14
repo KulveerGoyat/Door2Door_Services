@@ -1,0 +1,2 @@
+C:/Users/kulve/AndroidStudioProjects/Door_to_Door_Services/android/app/.cxx/Debug/386l6n76/x86/CMakeFiles/edit_cache.dir
+C:/Users/kulve/AndroidStudioProjects/Door_to_Door_Services/android/app/.cxx/Debug/386l6n76/x86/CMakeFiles/rebuild_cache.dir
