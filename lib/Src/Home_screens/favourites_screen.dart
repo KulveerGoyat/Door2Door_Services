@@ -21,7 +21,7 @@ class FavouritesScreen extends StatelessWidget {
         stream: FirebaseFirestore.instance.collection('favourites').orderBy('timestamp', descending: true).snapshots(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(child: CircularProgressIndicator(color: Colors.blueAccent,));
+            return Center(child: CircularProgressIndicator(color: isDarkMode? Colors.blue : secondaryColor));
           }
           if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
             return Center(child: Text("No favourites found", style: TextStyle(color: isDarkMode ? Colors.white : Colors.black)));

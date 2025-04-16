@@ -55,10 +55,8 @@ class SplashScreenState extends State<SplashScreen> {
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 20),
-
-            // Loading Indicator
-            const CircularProgressIndicator(
-              valueColor: AlwaysStoppedAnimation<Color>(Colors.blue),
+           CircularProgressIndicator(
+              valueColor: AlwaysStoppedAnimation<Color>(isDarkMode? Colors.blue : secondaryColor),
             ),
           ],
         ),
