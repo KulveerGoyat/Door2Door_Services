@@ -2,6 +2,7 @@
 import 'package:Door2Door_Services/Database/firebase_services.dart';
 import 'package:Door2Door_Services/Src/LogIn_Signup_screens/signup.dart';
 import 'package:flutter/material.dart';
+import '../Constants/colors.dart';
 import '../Constants/image_strings.dart';
 import '../Constants/size.dart';
 import '../Constants/text_strings.dart';
@@ -19,6 +20,10 @@ class LoginFooterWidgetState extends State<LoginFooterWidget> {
   final auth = AuthService();
   @override
   Widget build(BuildContext context) {
+    var mediaQuery = MediaQuery.of(context);
+    var brightness = mediaQuery.platformBrightness;
+    final isDarkMode = brightness == Brightness.dark;
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
@@ -59,12 +64,12 @@ class LoginFooterWidgetState extends State<LoginFooterWidget> {
           Navigator.push(context, MaterialPageRoute(builder: (context)=> const SignupPage()));
         }, child: Text.rich(TextSpan(
           text: dontHaveAnAccount, style: Theme.of(context).textTheme.bodyLarge,
-          children: const [
+          children: [
             TextSpan(
               text: signUp, style: TextStyle(
               fontWeight: FontWeight.w600,
               fontSize: 18,
-              color: Colors.blue,
+              color: isDarkMode? Colors.blue : secondaryColor,
     ),
             ),
           ],

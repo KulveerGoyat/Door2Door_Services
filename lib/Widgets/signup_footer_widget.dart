@@ -4,6 +4,7 @@ import 'package:Door2Door_Services/Src/LogIn_Signup_screens/login.dart';
 import 'package:Door2Door_Services/Widgets/button_loading_widget.dart';
 import 'package:flutter/material.dart';
 
+import '../Constants/colors.dart';
 import '../Constants/text_strings.dart';
 
 
@@ -21,6 +22,11 @@ class _SignUpFooterWidgetState extends State<SignUpFooterWidget> {
 
   @override
   Widget build(BuildContext context) {
+
+    var mediaQuery = MediaQuery.of(context);
+    var brightness = mediaQuery.platformBrightness;
+    final isDarkMode = brightness == Brightness.dark;
+
     return Column(
       children: [
         const Text("OR"),
@@ -63,7 +69,7 @@ class _SignUpFooterWidgetState extends State<SignUpFooterWidget> {
             TextSpan(
                 text: login.toUpperCase(),
                 style: TextStyle(
-                  color: Colors.blue,
+                  color: isDarkMode? Colors.blue : secondaryColor,
                   fontWeight: FontWeight.w600,
                 ))
           ])),

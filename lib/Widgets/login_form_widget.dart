@@ -1,6 +1,7 @@
 import 'dart:developer';
 import 'package:Door2Door_Services/Src/home.dart';
 import 'package:flutter/material.dart';
+import '../Constants/colors.dart';
 import '../Constants/size.dart';
 import '../Constants/text_strings.dart';
 import '../Database/firebase_services.dart';
@@ -31,8 +32,10 @@ class _LoginFormState extends State<LoginForm> {
 
   @override
   Widget build(BuildContext context) {
-
-    final width =  MediaQuery.of(context).size.width;
+    var mediaQuery = MediaQuery.of(context);
+    final width =  mediaQuery.size.width;
+    var brightness = mediaQuery.platformBrightness;
+    final isDarkMode = brightness == Brightness.dark;
 
     return Form(
       key: _formKey,
@@ -95,10 +98,10 @@ class _LoginFormState extends State<LoginForm> {
                     onPressed: () {
                       buildShowModalBottomSheet(context, width);
                     },
-                    child: const Text(
+                    child: Text(
                       forgetPassword,
                       style: TextStyle(
-                        color: Colors.blue,
+                        color: isDarkMode? Colors.blue : secondaryColor,
                         fontWeight: FontWeight.w600,
                       ),
                     ))),
