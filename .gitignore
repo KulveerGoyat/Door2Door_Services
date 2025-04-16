@@ -46,6 +46,3 @@ app.*.map.json
 
 # Firebase config - do not commit
 android/app/google-services.json
-lib/firebase_options.dart
-lib/Database/firebase_options.dart
-lib/Database/firebase_services.dart
