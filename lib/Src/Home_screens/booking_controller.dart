@@ -31,6 +31,7 @@ class BookingController extends GetxController {
       QuerySnapshot snapshot = await firestore.collection('bookings').get();
       List<Map<String, dynamic>> fetchedBookings = snapshot.docs.map((doc) {
         return {
+          'id': doc.id,
           'date': doc['date'],
           'time': doc['time'],
           'address': doc['address'],
@@ -42,6 +43,11 @@ class BookingController extends GetxController {
     } catch (e) {
       log('Error fetching bookings: $e');
     }
+  }
+
+  Future<void> deleteBooking(String id) async {
+    await FirebaseFirestore.instance.collection('bookings').doc(id).delete();
+    fetchBookings();
   }
 }
 

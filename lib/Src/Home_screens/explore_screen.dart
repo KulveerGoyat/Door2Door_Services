@@ -181,28 +181,72 @@ class ExploreScreenState extends State<ExploreScreen> {
                   endIcon: false,
                   onPress: () {
                     Get.defaultDialog(
+                      backgroundColor: Colors.white, // White background for the dialog
                       title: "LOGOUT",
-                      titleStyle: const TextStyle(fontSize: 20),
-                      content: const Padding(
-                        padding: EdgeInsets.symmetric(vertical: 15.0),
-                        child: Text("Are you sure, you want to Logout?"),
+                      titleStyle: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black, // Title color black
                       ),
-                      confirm: Expanded(
-                        child: ElevatedButton(
-                          onPressed: () async {
-                            await auth.signOut();
-                            Get.off(() => const WelcomeScreen());
-                          },
-                          style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.redAccent,
-                              side: BorderSide.none),
-                          child: const Text("Yes"),
+                      content: Padding(
+                        padding: EdgeInsets.symmetric(vertical: 15.0),
+                        child: Text(
+                          "Are you sure, you want to Logout?",
+                          style: TextStyle(
+                            color: Colors.black87,
+                            fontSize: 16,
+                          ),
                         ),
                       ),
-                      cancel: OutlinedButton(
-                          onPressed: () => Get.back(), child: const Text("No")),
+                      actions: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: Colors.black,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                              ),
+                              onPressed: () => Get.back(),
+                              child: Text(
+                                "No",
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                            SizedBox(width: 10),
+                            // "Yes" Button (confirm)
+                            ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: Colors.red,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                              ),
+                              onPressed: () async {
+                                await auth.signOut();
+                                Get.off(() => const WelcomeScreen());
+                              },
+                              child: Text(
+                                "Yes",
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
                     );
-                  }),
+                  }
+              ),
             ],
           ),
                 ),
